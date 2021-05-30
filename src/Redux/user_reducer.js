@@ -2,10 +2,7 @@ const SET_USER = 'user_reducer/SET_USER';
 const DELETE_USER = 'user_reducer/DELETE_USER';
 
 const initialState = {
-    isAuth: false,
-    username: null,
-    email: null,
-    password: null,
+    user: null,
 };
 
 const userReducer = (state=initialState, action) => {
@@ -13,25 +10,21 @@ const userReducer = (state=initialState, action) => {
         case SET_USER:
             return {
                 ...state,
-                isAuth: true,
-                ...action.payload,
+                user: {...action.payload},
             }
 
         case DELETE_USER:
             return {
                 ...state,
-                isAuth: false,
-                username: null,
-                email: null,
-                password: null,
+                user: null,
             }
 
         default: return state
     }
 }
 
-export const login_user = (username, email, password) => (dispatch) => {
-    dispatch(setUser({username, email, password}));
+export const login_user = (userData) => (dispatch) => {
+    dispatch(setUser(userData));
 }
 
 export const logout_user = () => (dispatch) => {

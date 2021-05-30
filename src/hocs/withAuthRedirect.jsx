@@ -5,15 +5,15 @@ import {Redirect} from 'react-router-dom';
 
 const withAuthRedirect = (Component) => {
 
-    const RedirectComponent = ({isAuth, ...props}) => {
-        if (!isAuth) return <Redirect to={'login'}/>;
+    const RedirectComponent = ({user, ...props}) => {
+        if (!user) return <Redirect to={'login'}/>;
 
         return <Component {...props}/>;
     }
 
     const mapStateToProps = (state) => {
         return {
-            isAuth: state.user.isAuth,
+            user: state.user.user,
         }
     }
 
