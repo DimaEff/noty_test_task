@@ -1,10 +1,13 @@
 import React from 'react';
+import {Container, Typography} from "@material-ui/core";
 
-const Profile = () => {
+
+const Profile = ({username}) => {
+
     return (
-        <div>
-            Profile
-        </div>
+        <Container maxWidth={'sm'}>
+            <Typography variant={'h3'}>{username}</Typography>
+        </Container>
     );
 };
 

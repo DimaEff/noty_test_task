@@ -23,11 +23,11 @@ const userReducer = (state=initialState, action) => {
     }
 }
 
-export const login_user = (userData) => (dispatch) => {
+export const loginUser = (userData) => (dispatch) => {
     dispatch(setUser(userData));
 }
 
-export const logout_user = () => (dispatch) => {
+export const logoutUser = () => (dispatch) => {
     dispatch(deleteUser());
 }
 

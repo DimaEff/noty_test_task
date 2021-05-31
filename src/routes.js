@@ -1,7 +1,7 @@
-import {HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE} from "./utils/consts";
-import Login from "./Components/Login/Login";
-import Profile from "./Components/Profile/Profile";
+import {HOME_ROUTE, LOGIN_ROUTE, getProfileRoute} from "./utils/consts";
 import Home from "./Components/Home/Home";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
+import LoginContainer from "./Components/Login/LoginContainer";
 
 
 // Для того, чтобы добавить новый путь
@@ -18,11 +18,11 @@ export const appRoutes = [
     },
     {
         path: LOGIN_ROUTE,
-        Component: Login,
+        Component: LoginContainer,
     },
     {
-        path: PROFILE_ROUTE,
-        Component: Profile,
+        path: getProfileRoute(),
+        Component: ProfileContainer,
         withAuth: true,
     }
 ];

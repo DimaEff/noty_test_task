@@ -1,11 +1,11 @@
 import React from 'react';
-import {connect} from "react-redux";
 import * as yup from 'yup';
 import {useHistory} from "react-router";
 
-import {login_user} from "../../Redux/user_reducer";
 import {Container} from "@material-ui/core";
 import MyForm from "../common/MyForm";
+import {getProfileRoute, HOME_ROUTE} from "../../utils/consts";
+import {Redirect} from "react-router-dom";
 
 
 const schema = yup.object().shape({
@@ -28,12 +28,12 @@ const schema = yup.object().shape({
         .min(3, 'The minimum password length is 3 symbols'),
 })
 
-const Login = ({login_user}) => {
+const Login = ({loginUser}) => {
     const history = useHistory();
 
     const login = async (formData) => {
-        await login_user(formData);
-        history.push('/profile');
+        await loginUser(formData);
+        history.push(getProfileRoute(formData.username));
     }
 
     return (
@@ -47,7 +47,7 @@ const Login = ({login_user}) => {
                     ],
                     buttons: [
                         {type: 'submit', name: 'login',},
-                        {name: 'cancel', action: () => history.push('/'),},
+                        {name: 'cancel', action: () => history.push(HOME_ROUTE),},
                     ]
                 }}
             </MyForm>
@@ -55,4 +55,4 @@ const Login = ({login_user}) => {
     )
 }
 
-export default connect(null, {login_user})(Login);
+export default Login;

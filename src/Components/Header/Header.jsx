@@ -3,7 +3,7 @@ import {AppBar, Box, Container, IconButton, makeStyles, Toolbar, Typography} fro
 import ExitToAppSharpIcon from '@material-ui/icons/ExitToAppSharp';
 
 import {Link} from "react-router-dom";
-import {LOGIN_ROUTE, PROFILE_ROUTE} from "../../utils/consts";
+import {LOGIN_ROUTE, getProfileRoute} from "../../utils/consts";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Header = ({user, logout_user}) => {
+const Header = ({user, logoutUser}) => {
     const styles = useStyles();
 
     return (
@@ -38,11 +38,11 @@ const Header = ({user, logout_user}) => {
                     </Box>
                     {user ?
                         (<>
-                            <IconButton onClick={logout_user}>
+                            <IconButton onClick={logoutUser}>
                                 <ExitToAppSharpIcon fontSize={'large'}/>
                             </IconButton>
                             <Typography variant="h6">
-                                <Link to={PROFILE_ROUTE} className={styles.authText}>{user.username || 'test'}</Link>
+                                <Link to={getProfileRoute(user.username)} className={styles.authText}>{user.username || 'test'}</Link>
                             </Typography>
                         </>) :
                         (<>

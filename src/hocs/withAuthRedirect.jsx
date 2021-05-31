@@ -2,11 +2,13 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Redirect} from 'react-router-dom';
 
+import {LOGIN_ROUTE} from "../utils/consts";
+
 
 const withAuthRedirect = (Component) => {
 
     const RedirectComponent = ({user, ...props}) => {
-        if (!user) return <Redirect to={'login'}/>;
+        if (!user) return <Redirect to={LOGIN_ROUTE}/>;
 
         return <Component {...props}/>;
     }
